@@ -1,6 +1,6 @@
 
 public class customer {
-	String customorid;
+	private String customorid;
 	
 	private MonthlyData monthlydata;
 	private outageDetials outagedetails;
@@ -12,16 +12,16 @@ public class customer {
 		customorid =n;
 	}
 	
-	boolean isEqual(customer one,customer two) {
-		if(one.getcustomorid().equals(two.getcustomorid())) {
+	boolean isEqual(customer two) {
+		if(customorid.equals(two.getcustomorid())) {
 			return true;
 		}else {
 			return false;
 		}
 	}
 	
-	boolean isLessThan(customer one, customer two) {
-		int c1 = Integer.parseInt(one.getcustomorid());
+	boolean isLessThan(customer two) {
+		int c1 = Integer.parseInt(customorid);
 		int c2 = Integer.parseInt(two.getcustomorid()); 	
 		 if(c1<c2) {
 			 return true;
