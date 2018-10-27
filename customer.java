@@ -5,6 +5,7 @@ public class customer {
 	private MonthlyData monthlydata;
 	private outageDetials outagedetails;
 	private meterEvents meterevents;
+	private poleImprovments poleimprov;
 	
 	public customer(String n) {
 		customorid =n;
@@ -29,6 +30,12 @@ public class customer {
 	}
 	public void setMeterevents(meterEvents meterevents) {
 		this.meterevents = meterevents;
+	}
+	public poleImprovments getPoleimprov() {
+		return poleimprov;
+	}
+	public void setPoleimprov(poleImprovments poleimprov) {
+		this.poleimprov = poleimprov;
 	}
 	
 }

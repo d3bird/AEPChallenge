@@ -34,8 +34,8 @@ public class main {
 		excelInput input = new excelInput("C:\\Users\\dogbi\\eclipse-workspace\\AEPChallenge\\Data.xls");
 		//input.getMonthlyData(1);
 		//input.getouttageData(1);
-		input.getmeterEvents(1);
-		
+		//input.getmeterEvents(1);
+		input.getPoleImprovments(1);
 	}
 
 }

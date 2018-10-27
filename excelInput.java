@@ -84,6 +84,42 @@ public class excelInput {
 		return me;
 	}
 	
+	public poleImprovments getPoleImprovments(int rownum) {
+		HSSFSheet ws =wb.getSheet("PoleTrnsfrmrImprovements");
+		poleImprovments pi = new poleImprovments();
+		HSSFRow r = ws.getRow(rownum);
+		
+		String tstring;
+		HSSFCell temp;
+		
+		for(int i =0;i<r.getLastCellNum();i++) {
+			temp = r.getCell(i);
+			tstring = cellToString(r.getCell(i));
+			//System.out.println(tstring);
+			switch (i) {
+			case 0:
+				pi.setCustomor_Key(tstring);
+				break;
+			case 1:
+				pi.setOperatingCompany(tstring);
+				break;
+			case 2:
+				pi.setStatus(tstring);
+				break;
+			case 3:
+				pi.setYear(tstring);
+				break;
+			case 4:
+				pi.setMonth(tstring);
+				break;
+			case 5:
+				pi.setImprovments(tstring);
+				break;
+			}
+		}
+		return pi;
+	}
+	
 	public outageDetials getouttageData(int rownum) {
 		HSSFSheet ws =wb.getSheet("OutageDetails");
 		outageDetials od = new outageDetials();
