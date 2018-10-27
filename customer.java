@@ -6,7 +6,7 @@ public class customer {
 	private outageDetials outagedetails;
 	private meterEvents meterevents;
 	private poleImprovments poleimprov;
-	
+	private FeedBack feedback;
 	public customer(String n) {
 		customorid =n;
 	}
@@ -36,6 +36,12 @@ public class customer {
 	}
 	public void setPoleimprov(poleImprovments poleimprov) {
 		this.poleimprov = poleimprov;
+	}
+	public FeedBack getFeedback() {
+		return feedback;
+	}
+	public void setFeedback(FeedBack feedback) {
+		this.feedback = feedback;
 	}
 	
 }

@@ -10,7 +10,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 public class excelInput {
 	
-	private String FILE_PATH;//"C:\\Users\\dogbi\\eclipse-workspace\\AEPChallenge\\Data.xls";
+	private String FILE_PATH;
 	private HSSFWorkbook wb;
 	
 
@@ -42,15 +42,32 @@ public class excelInput {
 	
 	private void getData() throws IOException {
 		File excel = new File(FILE_PATH);
-		FileInputStream fis = new FileInputStream(excel);
+		FileInputStream fis = new FileInputStream(new File(FILE_PATH));
 		 wb = new HSSFWorkbook(fis);
-		//HSSFSheet ws = wb.getSheetAt(1);
+	}
+	
+	public FeedBack getFeedback(int rownum) {
+		HSSFSheet ws =wb.getSheet("SurveyData");
+		FeedBack fb = new FeedBack();
+		HSSFRow r = ws.getRow(rownum);
 		
-		//int rows = ws.getLastRowNum()+1;
-		//int col = ws.getRow(0).getLastCellNum();
-	//	HSSFRow row =ws.getRow(0);
-	//	HSSFCell cell = row.getCell(0);
-	//	System.out.println(cellToString(cell));
+		String tstring;
+		HSSFCell temp;
+		
+		for(int i =0;i<r.getLastCellNum();i++) {
+			temp = r.getCell(i);
+			tstring = cellToString(r.getCell(i));
+			System.out.println(tstring);
+			switch (i) {
+			case 0:
+				fb.setCustomor_key(tstring);
+				break;
+			case 1:
+				fb.setFeedback(tstring);
+				break;
+			}
+		}
+		return fb;
 	}
 	
 	public meterEvents getmeterEvents(int rownum) {

@@ -17,25 +17,16 @@ public class main {
 	
 	
 	public static void main(String[] args) throws EncryptedDocumentException, InvalidFormatException, IOException{
-		/*File excel = new File(FILE_PATH);
-		FileInputStream fis = new FileInputStream(excel);
-		HSSFWorkbook wb = new HSSFWorkbook(fis);
-		HSSFSheet ws = wb.getSheetAt(1);
 		
-		int rows = ws.getLastRowNum()+1;
-		int col = ws.getRow(0).getLastCellNum();
-		HSSFRow row =ws.getRow(0);
-		HSSFCell cell = row.getCell(0);*/
-		
-		//String[][] data = new String[row][col];
-		
-		//System.out.println(cellToString(cell));
 		
 		excelInput input = new excelInput("C:\\Users\\dogbi\\eclipse-workspace\\AEPChallenge\\Data.xls");
 		//input.getMonthlyData(1);
 		//input.getouttageData(1);
 		//input.getmeterEvents(1);
-		input.getPoleImprovments(1);
+		//input.getPoleImprovments(1);
+		input.getFeedback(1);
+		
+		
 	}
 
 }
