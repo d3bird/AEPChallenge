@@ -1,10 +1,22 @@
 
 public class customer {
-	String name;
+	String customorid;
+	
+	private MonthlyData monthlydata;
+	
 	public customer(String n) {
-		name =n;
+		customorid =n;
 	}
-	String getName() {
-		return name;
+	String getcustomorid() {
+		return customorid;
 	}
+	public MonthlyData getMonthlydata() {
+		return monthlydata;
+	}
+	public void setMonthlydata(MonthlyData monthlydata) {
+		this.monthlydata = monthlydata;
+	}
+	
+	
+	
 }
