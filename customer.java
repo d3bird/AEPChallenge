@@ -7,9 +7,29 @@ public class customer {
 	private meterEvents meterevents;
 	private poleImprovments poleimprov;
 	private FeedBack feedback;
+	
 	public customer(String n) {
 		customorid =n;
 	}
+	
+	boolean isEqual(customer one,customer two) {
+		if(one.getcustomorid().equals(two.getcustomorid())) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	boolean isLessThan(customer one, customer two) {
+		int c1 = Integer.parseInt(one.getcustomorid());
+		int c2 = Integer.parseInt(two.getcustomorid()); 	
+		 if(c1<c2) {
+			 return true;
+		 }else {
+			 return false;
+		 }
+	}
+	
 	String getcustomorid() {
 		return customorid;
 	}
