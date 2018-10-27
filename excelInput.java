@@ -53,7 +53,36 @@ public class excelInput {
 	//	System.out.println(cellToString(cell));
 	}
 	
-	
+	public meterEvents getmeterEvents(int rownum) {
+		HSSFSheet ws =wb.getSheet("MeterEvents");
+		meterEvents me = new meterEvents();
+		HSSFRow r = ws.getRow(rownum);
+		
+		String tstring;
+		HSSFCell temp;
+		
+		for(int i =0;i<r.getLastCellNum();i++) {
+			temp = r.getCell(i);
+			tstring = cellToString(r.getCell(i));
+			
+			switch(i) {
+			case 0:
+				System.out.println(tstring);
+				me.setCustormor_key(tstring);
+				break;
+			case 2:
+				System.out.println(temp.getDateCellValue());
+				me.setEventDate(temp.getDateCellValue());
+				break;
+			case 3:
+				System.out.println(tstring);
+				me.setReason(tstring);
+				break;
+			}
+			
+		}
+		return me;
+	}
 	
 	public outageDetials getouttageData(int rownum) {
 		HSSFSheet ws =wb.getSheet("OutageDetails");
