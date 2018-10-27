@@ -71,9 +71,9 @@ public class excelInput {
 			case 1:
 				//System.out.println("date");
 				Date d =temp.getDateCellValue();
-				String t =d.toString();
+				//String t =d.toString();
 				//System.out.println(t);
-				data.setDate(t);
+				data.setDate(temp.getDateCellValue());
 				break;
 			case 2:
 				//System.out.println("zip");

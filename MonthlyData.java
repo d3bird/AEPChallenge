@@ -1,8 +1,9 @@
+import java.util.Date;
 
 public class MonthlyData {
 
 	private String Customer_Key;
-	private String Date;
+	private Date Date;
 	private String zip;
 	private String adverageCost;
 	private String adverageUse;
@@ -40,13 +41,13 @@ public class MonthlyData {
 
 
 
-	public String getDate() {
+	public Date getDate() {
 		return Date;
 	}
 
 
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		Date = date;
 	}
 
