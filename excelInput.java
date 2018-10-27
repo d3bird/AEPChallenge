@@ -53,8 +53,52 @@ public class excelInput {
 	//	System.out.println(cellToString(cell));
 	}
 	
+	
+	
+	public outageDetials getouttageData(int rownum) {
+		HSSFSheet ws =wb.getSheet("OutageDetails");
+		outageDetials od = new outageDetials();
+		HSSFRow r = ws.getRow(rownum);
+		
+		String tstring;
+		HSSFCell temp;
+		
+		for(int i =0;i<r.getLastCellNum();i++) {
+			temp = r.getCell(i);
+			tstring = cellToString(r.getCell(i));
+			switch(i) {
+			case 0:
+				od.setCustomer_Key(tstring);
+				System.out.println(tstring);
+				break;
+			case 1:
+				od.setStart(temp.getDateCellValue());
+				System.out.println(temp.getDateCellValue());
+
+				break;
+			case 2:
+				od.setEnd(temp.getDateCellValue());
+				System.out.println(temp.getDateCellValue());
+
+				break;
+			case 3:
+				od.setDurration(tstring);
+				System.out.println(tstring);
+
+				break;
+			case 4:
+				od.setWeather(tstring);
+				System.out.println(tstring);
+
+				break;
+			
+			}
+		}
+		return od;
+	}
+	
 	public MonthlyData getMonthlyData(int rownum) {
-		HSSFSheet ws =wb.getSheetAt(1);
+		HSSFSheet ws =wb.getSheet("MonthlyData");
 		MonthlyData data = new MonthlyData();
 		HSSFRow r = ws.getRow(rownum);
 		//System.out.println(r.getCell(1).get);
