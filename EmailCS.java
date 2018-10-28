@@ -12,7 +12,7 @@ public class EmailCS {
 	
 	
 	public EmailCS() {
-		
+		to ="hackathonexample@gmail.com";
 	}
 
 	public String getFrom() {
@@ -207,7 +207,7 @@ public class EmailCS {
 		Message message = new MimeMessage(session);
 		message.setFrom(new InternetAddress("hackathonexample@gmail.com"));
 		message.setRecipients(
-		Message.RecipientType.TO, InternetAddress.parse("hackathonexample@gmail.com"));
+		Message.RecipientType.TO, InternetAddress.parse(to));
 		message.setSubject("Update Message From AEP");
 		
 		String hello="Hello "+in.getcustomorid()+",";
