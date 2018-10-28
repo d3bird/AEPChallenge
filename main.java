@@ -63,7 +63,7 @@ public class main {
 				try {
 					emailer.sendMessage3(temp);
 				} catch (MessagingException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 				break;
@@ -85,19 +85,7 @@ public class main {
 	
 	public static void main(String[] args) {
 		coninterface();
-		
-		//13095811
-	//	EmailCS emailer = new EmailCS();
-		//excelInput input = new excelInput("C:\\Users\\dogbi\\eclipse-workspace\\AEPChallenge\\Data.xls");
-		
-	//	customer output =input.createOneCustomor("1.3095811E7");
-												//  1.30958117E7
-	//	String to = "dogbird9@gmail.com";
-		
-		//emailer.setTo(to);
-		
-		//emailer.sendMessage3(output);
-		
+	
 	}
 
 }
