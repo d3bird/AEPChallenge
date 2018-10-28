@@ -1,15 +1,21 @@
+import java.util.Vector;
 
 public class customer {
 	private String customorid;
 	
-	private MonthlyData monthlydata;
-	private outageDetials outagedetails;
-	private meterEvents meterevents;
-	private poleImprovments poleimprov;
-	private FeedBack feedback;
+	private Vector<MonthlyData> monthlydata;
+	private Vector< outageDetials> outagedetails;
+	private Vector<meterEvents> meterevents;
+	private Vector<poleImprovments> poleimprov;
+	private Vector<FeedBack> feedback;
 	
-	public customer(String n) {
-		customorid =n;
+	public customer() {
+		customorid =null;
+		monthlydata =new Vector<MonthlyData>();
+		outagedetails =new Vector<outageDetials>();
+		meterevents =new Vector<meterEvents>();
+		poleimprov =new Vector<poleImprovments>();
+		feedback =new Vector<FeedBack>();
 	}
 	
 	boolean isEqual(customer two) {
@@ -30,38 +36,41 @@ public class customer {
 		 }
 	}
 	
-	String getcustomorid() {
+	public String getcustomorid() {
 		return customorid;
 	}
-	public MonthlyData getMonthlydata() {
+	public void setcustomorid(String n) {
+		customorid =n;
+	}
+	public Vector<MonthlyData> getMonthlydata() {
 		return monthlydata;
 	}
-	public void setMonthlydata(MonthlyData monthlydata) {
-		this.monthlydata = monthlydata;
+	public void addMonthlydata(MonthlyData monthlydata) {
+		this.monthlydata.addElement(monthlydata);
 	}
-	public outageDetials getOutagedetails() {
+	public Vector<outageDetials> getOutagedetails() {
 		return outagedetails;
 	}
-	public void setOutagedetails(outageDetials outagedetails) {
-		this.outagedetails = outagedetails;
+	public void addOutagedetails(outageDetials outagedetails) {
+		this.outagedetails.addElement(outagedetails);
 	}
-	public meterEvents getMeterevents() {
+	public Vector<meterEvents> getMeterevents() {
 		return meterevents;
 	}
-	public void setMeterevents(meterEvents meterevents) {
-		this.meterevents = meterevents;
+	public void addMeterevents(meterEvents meterevents) {
+		this.meterevents.addElement(meterevents);
 	}
-	public poleImprovments getPoleimprov() {
+	public Vector<poleImprovments> getPoleimprov() {
 		return poleimprov;
 	}
-	public void setPoleimprov(poleImprovments poleimprov) {
-		this.poleimprov = poleimprov;
+	public void addPoleimprov(poleImprovments poleimprov) {
+		this.poleimprov.addElement(poleimprov);
 	}
-	public FeedBack getFeedback() {
+	public Vector<FeedBack> getFeedback() {
 		return feedback;
 	}
-	public void setFeedback(FeedBack feedback) {
-		this.feedback = feedback;
+	public void addFeedback(FeedBack feedback) {
+		this.feedback.addElement(feedback);
 	}
 	
 }

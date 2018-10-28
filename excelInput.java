@@ -2,6 +2,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.TreeSet;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -10,6 +12,8 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 public class excelInput {
 	
+	private TreeSet<customer> storage;
+	
 	private String FILE_PATH;
 	private HSSFWorkbook wb;
 	
@@ -17,7 +21,11 @@ public class excelInput {
 	private static String cellToString(HSSFCell in) {
 		int type;
 		Object Result = null;
+		if (in ==null || in.getCellType() ==in.CELL_TYPE_BLANK) {
+			return "";
+		}else {
 		type = in.getCellType();
+		
 		switch(type) {
 		case 0:
 			Result =in.getNumericCellValue();
@@ -25,8 +33,10 @@ public class excelInput {
 		case 1:
 			Result = in.getStringCellValue();
 			break;
-		//in.get
+		
 		}
+		}
+		//System.out.println(Result.toString());
 		return Result.toString(); 
 	}
 	
@@ -41,6 +51,7 @@ public class excelInput {
 	 }
 	
 	private void getData() throws IOException {
+		storage = new TreeSet<customer>();
 		File excel = new File(FILE_PATH);
 		FileInputStream fis = new FileInputStream(new File(FILE_PATH));
 		 wb = new HSSFWorkbook(fis);
@@ -189,10 +200,11 @@ public class excelInput {
 		for(int i =0;i<r.getLastCellNum();i++) {
 			temp = r.getCell(i);
 			tstring = cellToString(r.getCell(i));
-			System.out.println(tstring);
+			//System.out.println(tstring);
 			switch(i) {
 			case 0:
 				data.setCustomer_Key(tstring);
+				//System.out.println(data.getCustomer_Key());
 				break;
 			case 1:
 				//System.out.println("date");
@@ -257,6 +269,220 @@ public class excelInput {
 			}
 			}
 		
-	return null;
+	return data;
+	}
+
+	
+	String getfirstMonth(int n) {
+		HSSFSheet ws =wb.getSheet("MonthlyData");
+		HSSFRow r = ws.getRow(n);
+		HSSFCell c = r.getCell(0);
+		return cellToString(c);
+		
+	}
+	String getfirstFeed(int n) {
+		HSSFSheet ws =wb.getSheet("SurveyData");
+		HSSFRow r = ws.getRow(n);
+		HSSFCell c = r.getCell(0);
+		return cellToString(c);
+	}
+	String getfirstMeter(int n) {
+		HSSFSheet ws =wb.getSheet("MeterEvents");
+		HSSFRow r = ws.getRow(n);
+		HSSFCell c = r.getCell(0);
+		return cellToString(c);
+		}
+	String getfirstPole(int n) {
+		HSSFSheet ws =wb.getSheet("PoleTrnsfrmrImprovements");
+		HSSFRow r = ws.getRow(n);
+		HSSFCell c = r.getCell(0);
+		return cellToString(c);
+	}
+	String getfirstout(int n) {
+		HSSFSheet ws =wb.getSheet("OutageDetails");
+		HSSFRow r = ws.getRow(n);
+		HSSFCell c = r.getCell(0);
+		return cellToString(c);
+	}
+	
+	public void printStorage() {
+		 Iterator value = storage.iterator(); 
+		 for(int i =0; i<storage.size();i++) {
+			 System.out.println(value.next());
+		 }
+		
+	}
+	
+	customer createOneCustomor(String targ) {
+		customer output = new customer();
+		
+		//find the  monthly information
+		output.setcustomorid(targ);
+		HSSFSheet ws =wb.getSheet("MonthlyData");
+		MonthlyData md;
+		int col = ws.getLastRowNum();
+		int i =1;
+		String test;
+		boolean found =false;
+		while (i<col) {
+			test =getfirstMonth(i);
+			System.out.println(test);
+			if(targ.equals(test)) {
+				System.out.println("found one");
+				found =true;
+				md = getMonthlyData(i);
+				System.out.println("add " +i);
+				output.addMonthlydata(md);
+			}else {
+				if (found) {
+					System.out.println("found last one");
+					break;
+				}
+			}
+			i++;
+		}
+		if(found ==false) {
+			System.out.println("did not find target in the monthly data");
+		}
+		i = 1;
+		found =false;
+		System.out.println();
+		System.out.println("looking in feedback");
+		//finds any survay information
+		ws =wb.getSheet("SurveyData");
+		FeedBack fb = new FeedBack();
+		col =ws.getLastRowNum();
+		found =false;
+		while (i<col) {
+			test= getfirstFeed(i);
+			System.out.println(test);
+			if(targ.equals(test)) {
+				System.out.println("found one");
+				found =true;
+				fb = getFeedback(i);
+				System.out.println("add " +i);
+				output.addFeedback(fb);
+			}else {
+				if (found) {
+					System.out.println("found last one");
+					break;
+				}
+			}
+			i++;			
+		}
+		if(found ==false) {
+			System.out.println("did not find target in the feedback data");
+		}
+		i=1;
+		found = false;
+		System.out.println();
+		System.out.println("looking in meter");
+		//finds any information in the meter problems
+		ws =wb.getSheet("MeterEvents");
+		meterEvents me = new meterEvents();
+		col =ws.getLastRowNum();
+		while (i<col) {
+			test= getfirstMeter(i);
+			System.out.println(test);
+			if(targ.equals(test)) {
+				System.out.println("found one");
+				found =true;
+				me = getmeterEvents(i);
+				System.out.println("add " +i);
+				output.addMeterevents(me);
+			}else {
+				if (found) {
+					System.out.println("found last one");
+					break;
+				}
+			}
+			i++;			
+		}
+		if(found ==false) {
+			System.out.println("did not find target in the meterEvents data");
+		}
+		System.out.println();
+		System.out.println("looking in poleimprovments");
+		ws =wb.getSheet("PoleTrnsfrmrImprovements");
+		poleImprovments pi = new poleImprovments();
+		col =ws.getLastRowNum();
+		found =false;
+		i=1;
+		while (i<col) {
+			test= getfirstPole(i);
+			System.out.println(test);
+			if(targ.equals(test)) {
+				System.out.println("found one");
+				found =true;
+				pi = getPoleImprovments(i);
+				System.out.println("add " +i);
+				output.addPoleimprov(pi);
+			}else {
+				if (found) {
+					System.out.println("found last one");
+					break;
+				}
+			}
+			i++;			
+		}
+		if(found ==false) {
+			System.out.println("did not find target in the poleimprovments data");
+		}
+		
+		
+		ws =wb.getSheet("OutageDetails");
+		outageDetials od = new outageDetials();
+		col =ws.getLastRowNum();
+		i =1;
+		while (i<col) {
+			test= getfirstout(i);
+			System.out.println(test);
+			if(targ.equals(test)) {
+				System.out.println("found one");
+				found =true;
+				od = getouttageData(i);
+				System.out.println("add " +i);
+				output.addOutagedetails(od);
+			}else {
+				if (found) {
+					System.out.println("found last one");
+					break;
+				}
+			}
+			i++;			
+		}
+		if(found ==false) {
+			System.out.println("did not find target in the outage details data");
+		}
+		return output;
+	}
+	
+	public void createCustomors() {
+		
+		int rownumer=2;
+		
+		customer temp = new customer();
+		MonthlyData md =getMonthlyData(1);
+		String currentCustomor =md.getCustomer_Key();
+		String testing;
+		System.out.println(currentCustomor);
+		temp.setcustomorid(currentCustomor);
+		temp.addMonthlydata(md);
+		
+		boolean newcostomor =false;
+		while(rownumer<80) {
+			//System.out.println(x);
+			md = getMonthlyData(rownumer);
+			testing= md.getCustomer_Key();
+			if (testing.equals(currentCustomor)) {
+				temp.addMonthlydata(md);
+			}else {
+				storage.add(temp);
+				storage.contains(testing);
+				temp = new customer(); 
+				currentCustomor =md.getCustomer_Key();
+				temp.setcustomorid(currentCustomor);
+			}
+		}
 	}
 }

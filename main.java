@@ -9,6 +9,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
+
 public class main {
 
 	//"C:\\Users\\dogbi\\eclipse-workspace\\AEPChallenge\\Data.xls";
@@ -20,12 +21,10 @@ public class main {
 		
 		
 		excelInput input = new excelInput("C:\\Users\\dogbi\\eclipse-workspace\\AEPChallenge\\Data.xls");
-		//input.getMonthlyData(1);
-		//input.getouttageData(1);
-		//input.getmeterEvents(1);
-		//input.getPoleImprovments(1);
-		//input.getFeedback(1);
-		
+		//Object Result  =13095811;
+		//String targ = Result.toString();
+		//System.out.println(targ);
+		input.createOneCustomor("1.3095811E7");
 		
 	}
 

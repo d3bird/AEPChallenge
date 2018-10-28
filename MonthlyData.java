@@ -24,7 +24,25 @@ public class MonthlyData {
 	
 	
 	public MonthlyData() {
-		
+		Customer_Key =null;
+		Date =null;
+		zip =null;
+		adverageCost =null;
+		adverageUse =null;
+		billedamount =null;
+		billusage =null;
+		paidedOnTime =null;
+		totoalheatingdays =null;
+		totoalcoolingdays =null;
+		mintemp =null;
+		maxtemp =null;
+		servicecalls =null;
+		weblogins =null;
+		outages =null;
+		homewarrenty =null;
+		paperless =null;
+		alerts =null;
+		OAlerts =null;
 	}
 
 
