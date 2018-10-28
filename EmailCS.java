@@ -6,13 +6,6 @@ import javax.activation.*;
 
 public class EmailCS {
 
-    static final String BODY = String.join(
-    	    System.getProperty("line.separator"),
-    	    "<h1>Amazon SES SMTP Email Test</h1>",
-    	    "<p>This email was sent with Amazon SES using the ", 
-    	    "<a href='https://github.com/javaee/javamail'>Javamail Package</a>",
-    	    " for <a href='https://www.java.com'>Java</a>."
-    	);
 
 	private String from;
 	private String to;
@@ -230,17 +223,7 @@ public class EmailCS {
 		//System.out.println(monthly);
 		//System.out.println(feed);
 		System.out.println();
-		String msg = String.join(System.getProperty("line.separator"),
-				hello,
-				"",
-				monthly,
-				"",
-				outages,
-				"",
-				feed,
-				"",
-				goodby
-				);
+		String msg = hello+"<br>"+"<br>"+monthly+"<br>"+"<br>"+outages+"<br>"+"<br>"+feed+"<br>"+goodby;
 		System.out.println(msg);
  
 		
@@ -256,8 +239,4 @@ public class EmailCS {
 		System.out.println("messgae sent");
 	} 
 		
-		
-	
-	
-	
 }
