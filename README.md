@@ -1,9 +1,9 @@
 # AEPChallenge
  
-					   Leverage Social Media to Celebrate Customer Loyalty/Anniversaries: 
+Leverage Social Media to Celebrate Customer Loyalty/Anniversaries: 
 Using anonymized customer data, teams will be asked to come up with example facebook/email messaging that we could use to proactively to communicate with the
-ÅeexampleÅf customers so as to celebrate their loyalty. E.g. HAPPY 1st Anniversary ? with an email that might show trends, comparisons, etc. A way to make a customer
-feel ÅegoodÅf about AEP. 
+'example' customers so as to celebrate their loyalty. E.g. HAPPY 1st Anniversary ? with an email that might show trends, comparisons, etc. A way to make a customer
+feel 'good' about AEP. 
 
 This is our solution to the AEP challenge. 																 
 
