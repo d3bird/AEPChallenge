@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi-parent</artifactId>
+        <version>3.13-SNAPSHOT</version>
+    </parent>
+    <artifactId>poi-ooxml-schema-encryption</artifactId>
+    <packaging>jar</packaging>
+
+    <name>Apach POI - Openxmlformats Encryption Schema package</name>
+
+	<properties>
+		<!-- see http://docs.codehaus.org/display/SONAR/Narrowing+the+Focus for details of this property -->
+		<sonar.exclusions>target/generated-sources/*</sonar.exclusions>
+	</properties>
+  
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>xmlbeans-maven-plugin</artifactId>
+				<version>2.3.3</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>xmlbeans</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<schemaDirectory>../../src/ooxml/resources/org/apache/poi/poifs/crypt</schemaDirectory>
+					<sourceSchemas>
+						<sourceSchema>encryptionInfo.xsd</sourceSchema>
+					</sourceSchemas>
+					<xmlConfigs>
+						<xmlConfig implementation="java.io.File">../../src/ooxml/resources/org/apache/poi/poifs/crypt/encryptionInfo.xsdconfig</xmlConfig>
+					</xmlConfigs>
+					<javaSource>1.5</javaSource>
+					<optimize>yes</optimize>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.xmlbeans</groupId>
+			<artifactId>xmlbeans</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+    </dependencies>
+</project>

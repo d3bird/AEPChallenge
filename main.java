@@ -2,6 +2,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -17,14 +20,25 @@ public class main {
 	
 	
 	
-	public static void main(String[] args) throws EncryptedDocumentException, InvalidFormatException, IOException{
+	public static void main(String[] args) throws EncryptedDocumentException, InvalidFormatException, IOException, AddressException, MessagingException{
 		
-		
+		EmailCS emailer = new EmailCS();
 		excelInput input = new excelInput("C:\\Users\\dogbi\\eclipse-workspace\\AEPChallenge\\Data.xls");
-		//Object Result  =13095811;
-		//String targ = Result.toString();
-		//System.out.println(targ);
-		input.createOneCustomor("1.3095811E7");
+		
+		//customer output =input.createOneCustomor("1.3095811E7");
+		
+		String to = "dogbird9@gmail.com";
+		String from ="dogbird9@gmail.com";
+		emailer.setTo(to);
+		emailer.setFrom(from);
+	//	emailer.sendMessage();
+		emailer.sendMessage3();
+		//try {
+		//	emailer.sendmessage2();
+		//} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+		//	e.printStackTrace();
+	//	}
 		
 	}
 

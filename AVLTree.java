@@ -1,16 +1,10 @@
 
-class Node { 
-    int  height; 
-    Node left, right; 
-  customer key;
-    Node(customer d) { 
-    	key = d; 
-        height = 1; 
-    } 
-} 
+
 
 public class AVLTree {
 
+	
+	
     Node root; 
   
     // A utility function to get the height of the tree 
@@ -130,6 +124,24 @@ public class AVLTree {
         } 
     } 
   
- 
+ int addMonthlyData(Object node, String targ,MonthlyData md) {
+	 if(((Node) node).getKey().getcustomorid().equals(targ)) {
+		 return 1;
+	 }else {
+		 if(((Node) node).Right()!=null && ((Node) node).Left() !=null) {
+			return addMonthlyData(((Node) node).Right(),targ,md) + addMonthlyData(((Node) node).Left(),targ,md);
+
+		 }else if(((Node) node).Right()!=null){
+			 return addMonthlyData(((Node) node).Right(),targ,md);
+		 }else if(((Node) node).Left() !=null) {
+			 return addMonthlyData(((Node) node).Left(),targ,md);
+		 }else {
+			 return 0;
+		 }
+		 
+	 }
+	 
+	
+ }
   
 }
