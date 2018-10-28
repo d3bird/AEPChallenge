@@ -15,10 +15,7 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 public class main {
 
-	//"C:\\Users\\dogbi\\eclipse-workspace\\AEPChallenge\\Data.xls";
 
-	
-	
 	
 	public static void main(String[] args) throws EncryptedDocumentException, InvalidFormatException, IOException, AddressException, MessagingException{
 		
