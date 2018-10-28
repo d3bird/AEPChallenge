@@ -96,7 +96,7 @@ public class EmailCS {
 				
 				line2="last month your bill "+costPM+" and the month before that it was "+ costLM;// line 2
 				if(Double.parseDouble(costPM)<Double.parseDouble(costLM)) {
-					line3="congratulations you saved " +(Integer.parseInt(costLM)-Integer.parseInt(costPM))+ " dollars";
+					line3="congratulations you saved " +(Double.parseDouble(costLM)-Double.parseDouble(costPM))+ " dollars";
 				}else {
 					line3="It seems that you use more than the previous months, but all is not lost you can do it!";
 					

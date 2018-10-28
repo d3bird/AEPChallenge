@@ -15,6 +15,15 @@ public class excelInput {
 	private TreeSet<customer> storage;
 	
 	private String FILE_PATH;
+	
+	public String getFILE_PATH() {
+		return FILE_PATH;
+	}
+
+	public void setFILE_PATH(String fILE_PATH) {
+		FILE_PATH = fILE_PATH;
+	}
+
 	private HSSFWorkbook wb;
 	
 

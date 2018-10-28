@@ -1,34 +1,102 @@
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Scanner;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 
 import org.apache.poi.EncryptedDocumentException;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 
 public class main {
 
-
-	
-	public static void main(String[] args) throws EncryptedDocumentException, InvalidFormatException, IOException, AddressException, MessagingException{
+	private static String convert(String input) {
+		//System.out.println(input);
+		String output1;
+		String output2;
+		String output3;
 		
+		output1 = input.substring(0, 1)+".";
+		output2 =input.substring(1, input.length());
+		output3 ="E"+(input.length()-1);
+		String output = output1+output2+output3;
+		return output;
+	}
+	
+	public static void coninterface() {
+		boolean running = true;
 		EmailCS emailer = new EmailCS();
 		excelInput input = new excelInput("C:\\Users\\dogbi\\eclipse-workspace\\AEPChallenge\\Data.xls");
+		customer temp = null;
+		int determin;
+		String line;
+		Scanner in = new Scanner(System.in);
+		while(running) {
+			System.out.println("enter a number to pick the corresponding option");
+			System.out.println("0: choose a email to send to");
+			System.out.println("1: choose a person");
+			System.out.println("2: generate a email");
+			System.out.println("3: input new data");
+			System.out.println("4: quit");
+			determin=in.nextInt();
+			switch (determin) {
+			case 0:
+				System.out.println("input a email to send to : example@internet.net");
+				in.nextLine();
+				emailer.setTo(in.nextLine());
+				break;
+			case 1:
+				System.out.println("input a person to find via customer  key : example 13095811e7");
+				in.nextLine();
+				String ltemp = in.nextLine();
+				//System.out.println(convert(ltemp));
+				temp= input.createOneCustomor(convert(ltemp));
+				break;
+			case 2:
+				System.out.println("generating email");
+				in.nextLine();
+				if(temp ==null) {
+					System.out.println("enter a person to find first");
+					line = in.nextLine();
+					temp= input.createOneCustomor(convert(line));
+				}
+				try {
+					emailer.sendMessage3(temp);
+				} catch (MessagingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			case 3:
+				System.out.println("input a filepath for data file");
+				in.nextLine();
+				line = in.nextLine();
+				input.setFILE_PATH(line);
+				break;
+			case 4:
+				running =false;
+				break;
+			}
+			System.out.println();
+			System.out.println();
+			System.out.println();
+		}
+	}
+	
+	public static void main(String[] args) {
+		coninterface();
 		
-		customer output =input.createOneCustomor("1.3095811E7");
+		//13095811
+	//	EmailCS emailer = new EmailCS();
+		//excelInput input = new excelInput("C:\\Users\\dogbi\\eclipse-workspace\\AEPChallenge\\Data.xls");
 		
-		String to = "dogbird9@gmail.com";
+	//	customer output =input.createOneCustomor("1.3095811E7");
+												//  1.30958117E7
+	//	String to = "dogbird9@gmail.com";
 		
-		emailer.setTo(to);
+		//emailer.setTo(to);
 		
-		emailer.sendMessage3(output);
+		//emailer.sendMessage3(output);
 		
 	}
 
