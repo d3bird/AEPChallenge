@@ -25,14 +25,14 @@ public class main {
 		EmailCS emailer = new EmailCS();
 		excelInput input = new excelInput("C:\\Users\\dogbi\\eclipse-workspace\\AEPChallenge\\Data.xls");
 		
-		//customer output =input.createOneCustomor("1.3095811E7");
+		customer output =input.createOneCustomor("1.3095811E7");
 		
 		String to = "dogbird9@gmail.com";
-		String from ="dogbird9@gmail.com";
+		
 		emailer.setTo(to);
-		emailer.setFrom(from);
+		
 	//	emailer.sendMessage();
-		emailer.sendMessage3();
+		emailer.sendMessage3(output);
 		//try {
 		//	emailer.sendmessage2();
 		//} catch (MessagingException e) {

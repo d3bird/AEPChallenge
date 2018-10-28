@@ -95,15 +95,15 @@ public class excelInput {
 			
 			switch(i) {
 			case 0:
-				System.out.println(tstring);
+				//System.out.println(tstring);
 				me.setCustormor_key(tstring);
 				break;
 			case 2:
-				System.out.println(temp.getDateCellValue());
+				//System.out.println(temp.getDateCellValue());
 				me.setEventDate(temp.getDateCellValue());
 				break;
 			case 3:
-				System.out.println(tstring);
+			//	System.out.println(tstring);
 				me.setReason(tstring);
 				break;
 			}
@@ -162,7 +162,7 @@ public class excelInput {
 			switch(i) {
 			case 0:
 				od.setCustomer_Key(tstring);
-				System.out.println(tstring);
+				//System.out.println(tstring);
 				break;
 			case 1:
 				od.setStart(temp.getDateCellValue());
@@ -171,17 +171,17 @@ public class excelInput {
 				break;
 			case 2:
 				od.setEnd(temp.getDateCellValue());
-				System.out.println(temp.getDateCellValue());
+				//System.out.println(temp.getDateCellValue());
 
 				break;
 			case 3:
 				od.setDurration(tstring);
-				System.out.println(tstring);
+				//System.out.println(tstring);
 
 				break;
 			case 4:
 				od.setWeather(tstring);
-				System.out.println(tstring);
+				//System.out.println(tstring);
 
 				break;
 			
@@ -326,28 +326,28 @@ public class excelInput {
 		boolean found =false;
 		while (i<col) {
 			test =getfirstMonth(i);
-			System.out.println(test);
+			//System.out.println(test);
 			if(targ.equals(test)) {
-				System.out.println("found one");
+				//System.out.println("found one");
 				found =true;
 				md = getMonthlyData(i);
-				System.out.println("add " +i);
+				//System.out.println("add " +i);
 				output.addMonthlydata(md);
 			}else {
 				if (found) {
-					System.out.println("found last one");
+					//System.out.println("found last one");
 					break;
 				}
 			}
 			i++;
 		}
 		if(found ==false) {
-			System.out.println("did not find target in the monthly data");
+			//System.out.println("did not find target in the monthly data");
 		}
 		i = 1;
 		found =false;
-		System.out.println();
-		System.out.println("looking in feedback");
+		//System.out.println();
+		//System.out.println("looking in feedback");
 		//finds any survay information
 		ws =wb.getSheet("SurveyData");
 		FeedBack fb = new FeedBack();
@@ -355,54 +355,54 @@ public class excelInput {
 		found =false;
 		while (i<col) {
 			test= getfirstFeed(i);
-			System.out.println(test);
+			//System.out.println(test);
 			if(targ.equals(test)) {
-				System.out.println("found one");
+				//System.out.println("found one");
 				found =true;
 				fb = getFeedback(i);
-				System.out.println("add " +i);
+				//System.out.println("add " +i);
 				output.addFeedback(fb);
 			}else {
 				if (found) {
-					System.out.println("found last one");
+				//	System.out.println("found last one");
 					break;
 				}
 			}
 			i++;			
 		}
 		if(found ==false) {
-			System.out.println("did not find target in the feedback data");
+			//System.out.println("did not find target in the feedback data");
 		}
 		i=1;
 		found = false;
-		System.out.println();
-		System.out.println("looking in meter");
+	//	System.out.println();
+	//	System.out.println("looking in meter");
 		//finds any information in the meter problems
 		ws =wb.getSheet("MeterEvents");
 		meterEvents me = new meterEvents();
 		col =ws.getLastRowNum();
 		while (i<col) {
 			test= getfirstMeter(i);
-			System.out.println(test);
+			//System.out.println(test);
 			if(targ.equals(test)) {
-				System.out.println("found one");
+			//	System.out.println("found one");
 				found =true;
 				me = getmeterEvents(i);
-				System.out.println("add " +i);
+				//System.out.println("add " +i);
 				output.addMeterevents(me);
 			}else {
 				if (found) {
-					System.out.println("found last one");
+				//	System.out.println("found last one");
 					break;
 				}
 			}
 			i++;			
 		}
 		if(found ==false) {
-			System.out.println("did not find target in the meterEvents data");
+			//System.out.println("did not find target in the meterEvents data");
 		}
-		System.out.println();
-		System.out.println("looking in poleimprovments");
+	//	System.out.println();
+	//	System.out.println("looking in poleimprovments");
 		ws =wb.getSheet("PoleTrnsfrmrImprovements");
 		poleImprovments pi = new poleImprovments();
 		col =ws.getLastRowNum();
@@ -410,23 +410,23 @@ public class excelInput {
 		i=1;
 		while (i<col) {
 			test= getfirstPole(i);
-			System.out.println(test);
+			//System.out.println(test);
 			if(targ.equals(test)) {
-				System.out.println("found one");
+				//System.out.println("found one");
 				found =true;
 				pi = getPoleImprovments(i);
-				System.out.println("add " +i);
+				//System.out.println("add " +i);
 				output.addPoleimprov(pi);
 			}else {
 				if (found) {
-					System.out.println("found last one");
+					//System.out.println("found last one");
 					break;
 				}
 			}
 			i++;			
 		}
 		if(found ==false) {
-			System.out.println("did not find target in the poleimprovments data");
+			//System.out.println("did not find target in the poleimprovments data");
 		}
 		
 		
@@ -436,53 +436,25 @@ public class excelInput {
 		i =1;
 		while (i<col) {
 			test= getfirstout(i);
-			System.out.println(test);
+			//System.out.println(test);
 			if(targ.equals(test)) {
-				System.out.println("found one");
+				//System.out.println("found one");
 				found =true;
 				od = getouttageData(i);
-				System.out.println("add " +i);
+				//System.out.println("add " +i);
 				output.addOutagedetails(od);
 			}else {
 				if (found) {
-					System.out.println("found last one");
+					//System.out.println("found last one");
 					break;
 				}
 			}
 			i++;			
 		}
 		if(found ==false) {
-			System.out.println("did not find target in the outage details data");
+			//System.out.println("did not find target in the outage details data");
 		}
 		return output;
 	}
 	
-	public void createCustomors() {
-		
-		int rownumer=2;
-		
-		customer temp = new customer();
-		MonthlyData md =getMonthlyData(1);
-		String currentCustomor =md.getCustomer_Key();
-		String testing;
-		System.out.println(currentCustomor);
-		temp.setcustomorid(currentCustomor);
-		temp.addMonthlydata(md);
-		
-		boolean newcostomor =false;
-		while(rownumer<80) {
-			//System.out.println(x);
-			md = getMonthlyData(rownumer);
-			testing= md.getCustomer_Key();
-			if (testing.equals(currentCustomor)) {
-				temp.addMonthlydata(md);
-			}else {
-				storage.add(temp);
-				storage.contains(testing);
-				temp = new customer(); 
-				currentCustomor =md.getCustomer_Key();
-				temp.setcustomorid(currentCustomor);
-			}
-		}
-	}
 }

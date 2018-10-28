@@ -6,9 +6,6 @@ import javax.activation.*;
 
 public class EmailCS {
 
-	
-
-  
     static final String BODY = String.join(
     	    System.getProperty("line.separator"),
     	    "<h1>Amazon SES SMTP Email Test</h1>",
@@ -17,13 +14,9 @@ public class EmailCS {
     	    " for <a href='https://www.java.com'>Java</a>."
     	);
 
-	
-	
 	private String from;
 	private String to;
-	private String host;
-	private Properties properties;
-	private Session session;
+	
 	
 	public EmailCS() {
 		
@@ -46,14 +39,56 @@ public class EmailCS {
 	}
 	
 	
+	String getFeedback(customer in) {
+		if(in.getFeedback().isEmpty()) {
+			return"-1";
+		}else {
+			String output ="thank you for your feedback! We be looking into what you have to say.";
+			return output;
+		}	
+	}
 	
-	void sendMessage3() throws AddressException, MessagingException {
+	String getMonthlymessage(customer in) {
+		if(in.getMonthlydata().isEmpty()) {
+			return"-1";
+		}else {
+			String output ="";
+			String line1;
+			String line2;
+			Vector<MonthlyData> data = in.getMonthlydata();
+			if(data.size()>=2){
+				String costPM =data.get(data.size()-1).getBilledamount();
+				String costLM=data.get(data.size()-2).getAdverageCost();
+				line1="last month your bill "+costPM+" and the month before that it was "+ costLM;
+				if(Double.parseDouble(costPM)<Double.parseDouble(costLM)) {
+					line2="congratulations you saved " +(Integer.parseInt(costLM)-Integer.parseInt(costPM))+ " dollars";
+				}else {
+					line2="It seems that you use more than the previous months";
+					
+				}
+				
+			}else {
+				line1="last month you bill was "+data.get(0).getAdverageCost();
+				line2="";
+			}
+			output = String.join(System.getProperty("line.separator"),
+								line1,
+								line2);
+								
+			return output;
+		}	
+		
+	}
+	
+	
+	void sendMessage3(customer in) throws AddressException, MessagingException {
+		
 		Properties prop = new Properties();
 		prop.put("mail.smtp.auth", true);
 		prop.put("mail.smtp.starttls.enable", "true");
 		prop.put("mail.smtp.host", "smtp.gmail.com");
 		prop.put("mail.smtp.port", "587");
-		//prop.put("mail.smtp.ssl.trust", "smtp.mailtrap.io");
+		
 		
 		Session session = Session.getInstance(prop, new Authenticator() {
 		    @Override
@@ -66,9 +101,15 @@ public class EmailCS {
 		message.setFrom(new InternetAddress("hackathonexample@gmail.com"));
 		message.setRecipients(
 		  Message.RecipientType.TO, InternetAddress.parse("hackathonexample@gmail.com"));
-		message.setSubject("Mail Subject");
+		message.setSubject("Update Message From AEP");
 		 
-		String msg = "This is my first email using JavaMailer";
+		String monthly = getMonthlymessage(in);
+		String feed =getFeedback(in);
+		System.out.println(feed);
+		System.out.println(monthly);
+
+		System.out.println();
+		String msg = "AEP anual update";
 		 
 		MimeBodyPart mimeBodyPart = new MimeBodyPart();
 		mimeBodyPart.setContent(msg, "text/html");
@@ -79,41 +120,11 @@ public class EmailCS {
 		message.setContent(multipart);
 		 
 		Transport.send(message);
-		System.out.println("asd");
+		System.out.println("messgae sent");
 	} 
 		
 		
 	
 	
-	void sendMessage() {
-		System.out.println("attemting to send a message");
-		host="hackathonexample@gmail.com";
-		properties = System.getProperties();
-		 properties.setProperty("gmail.smtp.host", host);
-		 session = Session.getDefaultInstance(properties);
-		
-		try {
-	         // Create a default MimeMessage object.
-	         MimeMessage message = new MimeMessage(session);
-
-	         // Set From: header field of the header.
-	         message.setFrom(new InternetAddress(from));
-
-	         // Set To: header field of the header.
-	         message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-
-	         // Set Subject: header field
-	         message.setSubject("This is the Subject Line!");
-
-	         // Send the actual HTML message, as big as you like
-	         message.setContent("<h1>This is actual message</h1>", "text/html");
-
-	         // Send message
-	         Transport.send(message);
-	         System.out.println("Sent message successfully....");
-	      } catch (MessagingException mex) {
-	         mex.printStackTrace();
-	      }
-	}
 	
 }
