@@ -1,14 +1,13 @@
 # AEPChallenge
-This is our solution to the AEP challenge. 
+ 
+					   Leverage Social Media to Celebrate Customer Loyalty/Anniversaries: 
+Using anonymized customer data, teams will be asked to come up with example facebook/email messaging that we could use to proactively to communicate with the
+ÅeexampleÅf customers so as to celebrate their loyalty. E.g. HAPPY 1st Anniversary ? with an email that might show trends, comparisons, etc. A way to make a customer
+feel ÅegoodÅf about AEP. 
 
-******************************************************************************************************************************************************************
-* 									     Given Prompt:									 * 
-* 																				 *
-* 						  Leverage Social Media to Celebrate Customer Loyalty/Anniversaries: 						 *
-* Using anonymized customer data, teams will be asked to come up with example facebook/email messaging that we could use to proactively to communicate with the  *
-* ÅeexampleÅf customers so as to celebrate their loyalty. E.g. HAPPY 1st Anniversary ? with an email that might show trends, comparisons, etc. A way to make a 	 *
-* customer feel ÅegoodÅf about AEP. 																 *
-******************************************************************************************************************************************************************
+This is our solution to the AEP challenge. 																 
+
+*********************************************************************************************************************************************************************
 
 The Bobcats++ team consists of two members, Scott Crawford and Austin Nutter, who both come from the Athens branch of Ohio University. Scott is a Sophomore 
 Computer Science major and has attended five different Hackathons prior to Hack Ohi/O 2018. Austin is a Sophomore Computer Engineering major and has attended 
