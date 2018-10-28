@@ -31,14 +31,7 @@ public class main {
 		
 		emailer.setTo(to);
 		
-	//	emailer.sendMessage();
 		emailer.sendMessage3(output);
-		//try {
-		//	emailer.sendmessage2();
-		//} catch (MessagingException e) {
-			// TODO Auto-generated catch block
-		//	e.printStackTrace();
-	//	}
 		
 	}
 
