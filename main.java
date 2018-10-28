@@ -32,12 +32,12 @@ public class main {
 		String line;
 		Scanner in = new Scanner(System.in);
 		while(running) {
-			System.out.println("enter a number to pick the corresponding option");
-			System.out.println("0: choose a email to send to");
-			System.out.println("1: choose a person");
-			System.out.println("2: generate a email");
-			System.out.println("3: input new data");
-			System.out.println("4: quit");
+			System.out.println("Enter a number to pick the corresponding option");
+			System.out.println("0: Choose a email to send to");
+			System.out.println("1: Choose a person");
+			System.out.println("2: Generate a email");
+			System.out.println("3: Input new data");
+			System.out.println("4: Quit");
 			determin=in.nextInt();
 			switch (determin) {
 			case 0:

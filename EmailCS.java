@@ -64,7 +64,7 @@ public class EmailCS {
 					}
 				}
 				if(leastpayed.equals(data.get(data.size()-1).getBilledamount())) {
-				line5 ="You paid the lowest bill to date last month";
+				line5 ="You paid the lowest bill to date last month, "+data.get(data.size()-1).getBilledamount()+ " dollars";
 				}
 
 				double AdverageRate =0;
@@ -94,7 +94,7 @@ public class EmailCS {
 
 				}
 
-				line2="Last month your bill was "+costPM+" and the month before that it was "+ costLM;// line 2
+				line2="Last month your bill was "+costPM+" dollars and the month before that it was "+ costLM;// line 2
 				if(Double.parseDouble(costPM)<Double.parseDouble(costLM)) {
 					line3="Congratulations, you saved " +(Double.parseDouble(costLM)-Double.parseDouble(costPM))+ " dollars";
 				}else {
