@@ -22,7 +22,7 @@ multiple libraries and different strategies until it was decided to instead swit
 experienced with. After switching to Java, it was possible to make use of Apache POI to interpret Microsoft products, including Excel, to be able to read the data 
 off the spreadsheet. 
 
-*INSERT COMMANDS HERE* 
+Once you run the program you have the option of finding a finding a person, setting a email address, generating an email and sending it off to the address that was set and changing the data sheet for fresh data. The emails are generated based off of the data that we have the person, we show them possitive data from the previous billing periods to increase there satifaction with AEP.
 
 Both members learned a good bit from working on this project. The inexperienced member really went in and got his feet wet trying out Java for the first time hands 
 on with guidance from the experienced member. Meanwhile, the experienced member solidified his knowledge of using the Apache POI libraries and he learned how to 
